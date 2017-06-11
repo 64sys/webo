@@ -1,0 +1,111 @@
+' Gambas class file
+
+'
+' Konvertilo
+' Conversor y manipulador de archivos
+'
+' Copyright (C) Martín Belmonte
+'
+' This program is free software; you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation; either version 2 of the License, or
+' (at your option) any later version.
+'
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+'
+' You should have received a copy of the GNU General Public License
+' along with this program; if not, write to the Free Software
+' Foundation, Inc., 51 Franklin St, Fifth Floor,
+' Boston, MA  02110-1301  USA
+'
+'Export
+Public Sub _new()
+
+  Dim stxInfo As New String[]
+  Dim pnl As WebContainer
+  Dim txa As WebLabel
+  Dim tob As WebButton
+
+  Dim stxComp As String[]
+  Dim intComp As Integer
+
+  wctComp.Style["background-color"] = "#006FDF"
+
+  txa = New WebLabel(wctComp)
+  txa.Name = "txa-" & "Title"
+  txa.Text = MUtility.Capital(Application.Title)
+  txa.Alignment = Align.Center
+  txa.Height = 35
+
+  stxInfo = Msys.ProjInfo()
+
+  stxComp = Split(stxInfo[5], ":")
+
+  pnl = New WebContainer(wctComp)
+  pnl.Name = "pnl-" & "Components"
+  pnl.Arrangement = Arrange.Row
+  pnl.Height = 56
+  pnl.Margin = True
+
+  For intComp = 0 To stxComp.Max
+    tob = New WebButton(pnl) As "Url"
+    tob.Name = "tob-" & stxComp[intComp]
+    tob.Text = stxComp[intComp]
+    tob.Tag = "http://gambaswiki.org/wiki/comp/" & stxComp[intComp]
+    tob.Tooltip = ("Clic para ver detalles en") & " " & "GambasForge/Wiki"
+    tob.Height = 28
+    tob.Width = 7 * String.Len(stxComp[intComp])
+    tob.Border = True
+  Next
+
+End
+
+Public Sub WebForm_Open()
+
+  Me.Refresh
+
+End
+
+Public Sub Url_Click()
+
+  Dim tob As WebButton
+  Dim strUrl As String
+  Dim strType As String
+  Dim strSubject As String
+  Dim stxAddress As New String[]
+
+  tob = Last
+
+  strUrl = tob.Tag
+
+  If InStr(strUrl, "@") > 0 Then
+    strType = "email"
+    stxAddress.Add(strUrl)
+
+    strSubject = ("Hola desarrolladores de") & " " & Application.Name & " [" & MUtility.Timestamp(Now()) & "]"
+
+  Else
+    If InStr(strUrl, "http") > 0 Then
+      strType = "web"
+    Else
+      strType = "Unknown"
+    Endif
+  Endif
+  '
+  Select strType
+    Case "email"
+      'Desktop.SendMail(stxAddress,,, strSubject)
+    Case "web"
+      'Desktop.Open(strUrl)
+  End Select
+
+End
+
+Public Sub btnClose_Click()
+
+  wctComp.Visible = False
+
+End

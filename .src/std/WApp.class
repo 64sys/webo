@@ -1,0 +1,38 @@
+' Gambas class file
+
+'Export
+
+Public Sub wbtLogOn_Click()
+
+  wctLogIn.Visible = False
+  wctApp.Visible = True
+  wctHead.Visible = True
+  wctFoot.Visible = True
+
+End
+
+Public Sub wbtLogOut_Click()
+
+  wctLogIn.Visible = True
+  wctApp.Visible = False
+  wctHead.Visible = False
+  wctFoot.Visible = False
+
+End
+
+Public Sub WebForm_Open()
+
+  wctLogIn.Visible = True
+  wctApp.Visible = False
+  wctHead.Visible = False
+  wctFoot.Visible = False
+
+End
+
+Public Function LoadData(strUser As String, strPsswd As String) As Integer
+
+  Dim strTimestamp As String
+
+  strTimestamp = MUtility.Timestamp(Now())
+
+End

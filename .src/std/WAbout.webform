@@ -1,0 +1,54 @@
+# Gambas Form File 3.0
+
+{ WebForm WebForm
+  #MoveScaled(0,0,69,97)
+  { Panel1 WebContainer About
+    Name = "Panel1"
+    #MoveScaled(1,1,67,95)
+    Arrangement = Arrange.Vertical
+    { Panel2 WebContainer
+      #MoveScaled(1,1,65,21)
+      Arrangement = Arrange.Horizontal
+      { Panel3 WebContainer
+        #MoveScaled(1,1,10,19)
+        Expand = True
+      }
+      { pioLogo WebImage About
+        Name = "pioLogo"
+        #MoveScaled(11,1,21,19)
+      }
+      { Panel4 WebContainer
+        #MoveScaled(32,1,10,19)
+        Expand = True
+      }
+    }
+    { pnlAbout WebContainer
+      #MoveScaled(1,22,65,54)
+      Expand = True
+      Arrangement = Arrange.Vertical
+    }
+    { Panel5 WebContainer
+      #MoveScaled(1,76,65,10)
+      Arrangement = Arrange.Horizontal
+      { pioGNULinux WebImage About
+        Name = "pioGNULinux"
+        #MoveScaled(1,1,10,8)
+      }
+      { pioGambas WebImage About
+        Name = "pioGambas"
+        #MoveScaled(11,1,10,8)
+      }
+      { PictureBox1 WebImage
+        #MoveScaled(21,1,16,8)
+      }
+      { Panel6 WebContainer
+        #MoveScaled(37,1,9,8)
+        Expand = True
+      }
+      { btnClose WebButton
+        #MoveScaled(46,1,16,8)
+        Text = ("Cerrar")
+      }
+    }
+  }
+}
