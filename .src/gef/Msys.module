@@ -155,9 +155,32 @@ Public Function ComputerName() As String 'devuelve el nombre del pc
 
 End
 
-Public Function CurrentUser() As String 'devuelve el usuario activo
+Public Function CurrentUser() As String[] 'devuelve el usuario activo
 
   Return System.User.Name
+
+End
+
+Public Function GetSystemUsers() As String[] ''Devuelve el una lista de usuarios del sistema Linux.
+
+  Dim stxTUsr As New String[]
+  Dim stxUsr As New String[]
+  Dim strUser As String
+
+  stxTUsr = MUtility.FileLoad("/etc/passwd")
+
+  If stxTUsr.Count > 0 Then
+
+    For Each strUser In stxTUsr
+      If Split(strUser, ":")[5] = "/home" &/ Split(strUser, ":")[0] Then
+        If InStr(Split(strUser, ":")[6], "false") = 0 Then
+          stxUsr.Add(Split(strUser, ":")[0])
+        Endif
+      Endif
+    Next
+  Endif
+
+  Return stxUsr
 
 End
 

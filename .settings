@@ -4,17 +4,27 @@ Count=0
 [DebugWindow]
 Count=0
 
+[DebugWindow/Msys.GetSystemUsers()]
+Geometry=[0,33,224,280]
+
 [DebugWindow/stxComp]
 Geometry=[-4,23,224,280]
 
+[DebugWindow/stxTUsr]
+Geometry=[564,33,756,856]
+
+[DebugWindow/stxUsers]
+Geometry=[0,33,224,280]
+
+[DebugWindow/stxUsr]
+Geometry=[0,33,224,280]
+
 [OpenFile]
-Active=5
+Active=1
 File[1]=".src/std/WApp.webform"
-File[2]=".src/std/WApp.class:0.3"
-Count=5
-File[3]=".src/std/Starter.module:0.4"
-File[4]=".src/std/WLogIN.webpage:13.16"
-File[5]=".src/std/WLogIn2.webpage:0.59"
+File[2]=".src/std/WApp.class:25.62"
+Count=3
+File[3]=".src/gef/Msys.module:42.560"
 
 [Watches]
 Count=0

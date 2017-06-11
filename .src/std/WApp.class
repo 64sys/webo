@@ -1,31 +1,95 @@
 ' Gambas class file
 
-'Export
+Export
+
+Public strTimeStamp As String
 
 Public Sub wbtLogOn_Click()
 
-  wctLogIn.Visible = False
-  wctApp.Visible = True
-  wctHead.Visible = True
-  wctFoot.Visible = True
+  Dim strUser As String
+  Dim strPsswd As String
+
+  strPsswd = "1234" ' Por el momento lo pongo así, mas adelante esta el tema de autenticar con A.Directory
+
+  Select wtoUser.Text
+    Case "", Null
+      strUser = ""
+    Case Else
+      strUser = wtoUser.Text
+  End Select
+
+  strUser = UserValidation(wtoUser.Text)
+
+  Select strUser
+    Case ""
+      Message.Warning(("Hay un error de usuario contraseña") & "\n" & ("por favor vuelva a intentarlo"))
+    Case Else
+
+      If FormatData() = 1 Then
+        If LoadData(strUser, strPsswd) = 1 Then
+
+          wctLogIn2.Visible = False
+          wctApp.Visible = True
+          wctHead.Visible = True
+          wctFoot.Visible = True
+          WebContainer2.Visible = True
+
+          If WebContainer2.Visible = True Then
+            WebHtml1.Refresh
+          Endif
+
+        Endif
+      Endif
+
+  End Select
 
 End
 
 Public Sub wbtLogOut_Click()
 
-  wctLogIn.Visible = True
+  wctHead.Visible = True
+  wctLogIn2.Visible = True
   wctApp.Visible = False
-  wctHead.Visible = False
   wctFoot.Visible = False
+  WebContainer2.Visible = False
 
 End
 
 Public Sub WebForm_Open()
 
-  wctLogIn.Visible = True
+  wctHead.Visible = True
+  wctLogIn2.Visible = True
   wctApp.Visible = False
-  wctHead.Visible = False
   wctFoot.Visible = False
+  WebContainer2.Visible = False
+
+End
+
+Public Function UserValidation(strUsername As String) As String
+
+  Dim stxUsr As New String[]
+
+  stxUsr.Clear
+  stxUsr = Msys.GetSystemUsers()
+
+  If stxUsr.Find(strUsername) > -1 Then
+
+    Return strUsername
+
+  Else
+    Return ""
+  Endif
+
+End
+
+Public Function FormatData() As Integer
+
+  wtbData.Columns.Count = 0
+
+  wtbData.AddColumn(("Usuario"), "1", 1)
+  wtbData.AddColumn(("Fecha"), "1", 1)
+
+  Return 1
 
 End
 
@@ -33,6 +97,8 @@ Public Function LoadData(strUser As String, strPsswd As String) As Integer
 
   Dim strTimestamp As String
 
-  strTimestamp = MUtility.Timestamp(Now())
+  strTimeStamp = MUtility.Timestamp(Now())
+
+  Return 1
 
 End

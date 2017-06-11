@@ -1,6 +1,6 @@
 # Gambas Project File 3.0
 # Compiled with Gambas 3.9.2
-Startup=WLogIn2
+Startup=WApp
 UseHttpServer=1
 Icon=.public/logo.png
 Version=0.0.1

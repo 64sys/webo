@@ -1,13 +1,12 @@
 # Gambas Form File 3.0
 
 { WebForm WebForm
-  #MoveScaled(0,0,64,91)
+  #MoveScaled(0,0,61,87)
   Arrangement = Arrange.Vertical
   { wctHead WebContainer
-    #MoveScaled(1,1,62,10)
+    #MoveScaled(1,1,59,10)
     Height = "12em"
     Visible = False
-    Expand = True
     Arrangement = Arrange.Horizontal
     { WebContainer3 WebContainer
       #MoveScaled(1,1,13,8)
@@ -27,87 +26,131 @@
     }
   }
   { wctLogIn WebContainer
-    #MoveScaled(1,11,62,23)
+    #MoveScaled(1,11,59,27)
+    Height = "12em"
     Expand = True
-    Margin = True
-    Spacing = True
-    { wbtLogOn WebButton
-      #MoveScaled(41,18,16,4)
-      Text = ("Ingresar")
+    Arrangement = Arrange.Horizontal
+    { WebContainer6 WebContainer
+      #MoveScaled(1,1,4,25)
+      Expand = True
+      Arrangement = Arrange.Horizontal
     }
-    { WebLabel1 WebLabel
-      #MoveScaled(4,3,24,4)
-      Text = ("Usuario")
+    { wctLogIn2 WebContainer
+      #MoveScaled(5,1,47,25)
+      Width = "5cm"
+      Expand = True
+      Arrangement = Arrange.Vertical
+      Margin = True
+      Spacing = True
+      { WebContainer11 WebContainer
+        #MoveScaled(1,1,45,7)
+        Expand = True
+        Arrangement = Arrange.Column
+        { WebLabel1 WebLabel
+          #MoveScaled(1,1,14,5)
+          Expand = True
+          Text = ("Usuario")
+          Border = True
+        }
+        { wtoUser WebTextBox
+          #MoveScaled(15,1,17,5)
+          Expand = True
+          Tooltip = ("Escriba su usuario")
+        }
+      }
+      { WebContainer10 WebContainer
+        #MoveScaled(1,9,45,7)
+        Expand = True
+        Arrangement = Arrange.Column
+        { WebLabel2 WebLabel
+          #MoveScaled(1,1,12,5)
+          Expand = True
+          Text = ("Contraseña")
+          Border = True
+        }
+        { wtoPassword WebTextBox
+          #MoveScaled(13,1,23,5)
+          Tooltip = ("Escriba su contraseña")
+        }
+      }
+      { WebContainer8 WebContainer
+        #MoveScaled(1,17,45,7)
+        Expand = True
+        Arrangement = Arrange.Row
+        { WebContainer9 WebContainer
+          #MoveScaled(1,1,4,5)
+          Expand = True
+          Arrangement = Arrange.Horizontal
+          Border = True
+        }
+        { wbtLogOn WebButton
+          #MoveScaled(5,1,14,5)
+          Text = ("Ingresar")
+        }
+      }
     }
-    { wtoUser WebTextBox
-      #MoveScaled(32,3,24,4)
-      Tooltip = ("Escriba su usuario")
-    }
-    { wtoPassword WebTextBox
-      #MoveScaled(32,9,24,4)
-      Tooltip = ("Escriba su contraseña")
-    }
-    { WebLabel2 WebLabel
-      #MoveScaled(4,9,24,4)
-      Text = ("Contraseña")
+    { WebContainer7 WebContainer
+      #MoveScaled(52,1,4,25)
+      Expand = True
+      Arrangement = Arrange.Horizontal
     }
   }
   { wctApp WebContainer
-    #MoveScaled(1,34,62,44)
+    #MoveScaled(1,38,59,26)
+    Width = "100em"
     Visible = False
     Expand = True
     Arrangement = Arrange.Vertical
     Margin = True
     Spacing = True
-    { WebContainer2 WebContainer
-      #MoveScaled(1,1,60,7)
-      { WebButton1 WebButton
-        #MoveScaled(6,2,4,4)
-        Image = "logo.png"
-      }
-    }
     { wtbData WebTable
-      #MoveScaled(1,9,60,19)
+      #MoveScaled(1,1,57,12)
       Background = Color.Orange
     }
-    { wbtLogOut WebButton
-      #MoveScaled(1,29,60,4)
-      Text = ("Salir")
+    { WebContainer2 WebContainer
+      #MoveScaled(1,14,57,9)
+      Visible = False
+      Arrangement = Arrange.Horizontal
+      { WebButton1 WebButton
+        #MoveScaled(1,1,4,7)
+        Image = "logo.png"
+      }
+      { wbtLogOut WebButton
+        #MoveScaled(5,1,17,7)
+        Text = ("Salir")
+      }
+      { WebHtml1 WebHtml
+        #MoveScaled(22,1,31,7)
+        Expand = True
+        Text = ("<!doctype html>\n<html>\n  <head>\n    <title>Radar Chart</title>\n    <script src=\"js/Chart.js\"></script>\n     <script src=\"js/legend.js\"></script>\n    <meta name = \"viewport\" content = \"initial-scale = 1, user-scalable = no\">\n    <style>\n      canvas{\n      }\n    </style>\n  </head>\n  <body>\n     <div>\n    <canvas id=\"canvas\" height=\"300\" width=\"300\"></canvas>\n    <div id=\"lineLegend\"></div>\n  </div>\n\n  <script>\n\n    var pieData = [\n        {\n          value: 30,\n          color:\"#F38630\",\n          title: 'Sevilla'\n        },\n        {\n          value : 50,\n          color : \"#E0E4CC\",\n          title: 'Cadiz'\n        },\n        {\n          value : 100,\n          color : \"#69D2E7\",\n          title: 'Huelva'\n        }\n      \n      ];\n\n  var myPie = new Chart(document.getElementById(\"canvas\").getContext(\"2d\")).Pie(pieData);\n    var ctx = document.getElementById(\"canvas\").getContext(\"2d\");\n  \n  legend(document.getElementById(\"lineLegend\"),pieData); \n  </script>\n  </body>\n</html>")
+      }
     }
   }
   { wctFoot WebContainer
-    #MoveScaled(1,78,62,9)
+    #MoveScaled(1,64,59,9)
     Height = "4em"
     Visible = False
     Expand = True
     Arrangement = Arrange.Horizontal
-    { WebImage2 WebImage
+    { WebImage3 WebImage
       #MoveScaled(1,1,8,7)
       Width = "4em"
       Height = "4em"
-      Image = "gnulinux-powered.png"
+      Image = "gambas-powered.png"
     }
-    { WebImage3 WebImage
+    { WebImage2 WebImage
       #MoveScaled(9,1,8,7)
       Width = "4em"
       Height = "4em"
-      Image = "gambas-powered.png"
+      Image = "gnulinux-powered.png"
     }
     { WebContainer1 WebContainer
       #MoveScaled(17,1,13,7)
       Expand = True
       Arrangement = Arrange.Horizontal
     }
-    { btnClose WebButton
-      #MoveScaled(30,1,16,7)
-      Width = "8em"
-      Height = "4em"
-      Text = ("Cerrar")
-    }
-    { WebContainer5 WebContainer
-      #MoveScaled(46,1,13,7)
-      Expand = True
-      Arrangement = Arrange.Horizontal
+    { wlbTimestalmp WebLabel
+      #MoveScaled(30,1,24,7)
     }
   }
 }
